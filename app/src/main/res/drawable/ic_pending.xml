@@ -1,0 +1,30 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 箱子主体 -->
+    <path
+        android:pathData="M21,8v9c0,1.1 -0.9,2 -2,2H5c-1.1,0 -2,-0.9 -2,-2V8"
+        android:strokeWidth="1.6"
+        android:strokeColor="#FF000000"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"/>
+    <!-- 纸箱盖子（V形张开） -->
+    <path
+        android:pathData="M3,8l9,4.5L21,8M12,12.5V19"
+        android:strokeWidth="1.6"
+        android:strokeColor="#FF000000"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"/>
+    <!-- 顶部轮廓 -->
+    <path
+        android:pathData="M3,8l9,-5l9,5"
+        android:strokeWidth="1.6"
+        android:strokeColor="#FF000000"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"/>
+</vector>
