@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import com.box.picker.data.AppDatabase
 import com.box.picker.data.RegexRule
 import com.box.picker.logic.SmsParser
+import com.box.picker.ui.components.DialogTextField
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -174,40 +175,19 @@ fun AddRuleDialog(onDismiss: () -> Unit, onConfirm: (String, String, String, Str
                 Text("保存规则")
             }
         },
-        dismissButton = {
-            TextButton(onClick = onDismiss) {
-                Text("取消", color = Color(0xFF8E8E93))
-            }
-        },
         title = { Text("新建解析规则", fontWeight = FontWeight.Bold) },
         text = {
             Column(
                 verticalArrangement = Arrangement.spacedBy(12.dp),
                 modifier = Modifier.verticalScroll(rememberScrollState())
             ) {
-                RuleTextField(value = stationName, onValueChange = { stationName = it; if(providerName.isEmpty()) providerName = it }, label = "驿站名称 (如: 菜鸟驿站)")
-                RuleTextField(value = keywords, onValueChange = { keywords = it }, label = "识别关键词(逗号分隔)")
-                RuleTextField(value = providerName, onValueChange = { providerName = it }, label = "服务商标示(展示用)")
-                RuleTextField(value = matchingRules, onValueChange = { matchingRules = it }, label = "匹配正则 (支持多行)", minLines = 3)
+                DialogTextField(value = stationName, onValueChange = { stationName = it; if(providerName.isEmpty()) providerName = it }, label = "驿站名称 (如: 菜鸟驿站)")
+                DialogTextField(value = keywords, onValueChange = { keywords = it }, label = "识别关键词(逗号分隔)")
+                DialogTextField(value = providerName, onValueChange = { providerName = it }, label = "服务商标示(展示用)")
+                DialogTextField(value = matchingRules, onValueChange = { matchingRules = it }, label = "匹配正则 (支持多行)", minLines = 3)
             }
         },
         shape = RoundedCornerShape(28.dp),
         containerColor = if (isSystemInDarkTheme()) Color(0xFF1C1C1E) else Color.White
-    )
-}
-
-@Composable
-fun RuleTextField(value: String, onValueChange: (String) -> Unit, label: String, minLines: Int = 1) {
-    OutlinedTextField(
-        value = value,
-        onValueChange = onValueChange,
-        label = { Text(label, style = MaterialTheme.typography.bodySmall) },
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(12.dp),
-        minLines = minLines,
-        colors = OutlinedTextFieldDefaults.colors(
-            focusedBorderColor = Color(0xFF007AFF),
-            unfocusedBorderColor = Color.LightGray.copy(alpha = 0.5f)
-        )
     )
 }
