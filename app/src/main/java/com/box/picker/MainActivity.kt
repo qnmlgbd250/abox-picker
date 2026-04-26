@@ -161,7 +161,11 @@ fun MainListScreen(db: AppDatabase, type: String) {
     val dao = db.expressDao()
     val scope = rememberCoroutineScope()
     var showImportDialog by remember { mutableStateOf(false) }
-    val packages by (if (type == "pending") dao.getPendingPackages() else dao.getArchivedPackages()).collectAsState(initial = emptyList())
+    
+    val flow = remember(type) { 
+        if (type == "pending") dao.getPendingPackages() else dao.getArchivedPackages() 
+    }
+    val packages by flow.collectAsState(initial = emptyList())
 
     Column(modifier = Modifier.fillMaxSize()) {
         // ... (Header code remains same)

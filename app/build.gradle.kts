@@ -12,8 +12,8 @@ android {
         applicationId = "com.box.picker"
         minSdk = 26
         targetSdk = 34
-        versionCode = 3
-        versionName = "1.0.5"
+        versionCode = 4
+        versionName = "1.0.6"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
