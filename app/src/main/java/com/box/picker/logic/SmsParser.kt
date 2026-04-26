@@ -32,9 +32,9 @@ object SmsParser {
                     if (match != null) {
                         // 优先提取 code 命名组，没有则提取第一个捕获组，再没有则提取整个匹配项
                         val extracted = try { match.groups["code"]?.value } catch (e: Exception) { null }
-                            ?: match.groups[1]?.value 
+                            ?: if (match.groups.size > 1) match.groups[1]?.value else null
                             ?: match.value
-                        extractedParts.add(extracted.trim())
+                        extracted?.let { extractedParts.add(it.trim()) }
                     }
                 }
 
