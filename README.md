@@ -1,55 +1,119 @@
 # Abox Picker
 
-Abox Picker 是一款简洁、高效的 Android 取件码管理工具。它通过解析短信内容，自动提取快递驿站的取件信息，帮助用户集中管理待取包裹。
+[![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white)](https://kotlinlang.org)
+[![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://developer.android.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## 🌟 核心功能
+A smart, lightweight Android app for managing delivery pickup codes. Automatically parses SMS messages and extracts pickup information from package stations.
 
-- **智能解析**：支持自定义正则表达式规则，根据短信关键词自动匹配并提取取件码。
-- **本地存储**：基于 Room 数据库实现，所有数据保存在本地，保护隐私且离线可用。
-- **状态管理**：清晰展示“待取件”和“已取件（归档）”记录。
-- **高度定制**：用户可以根据不同驿站（如菜鸟驿站、丰巢等）的短信格式，灵活配置匹配规则和优先级。
-- **现代 UI**：使用 Jetpack Compose 构建，拥有流畅的交互体验和现代感的视觉设计（如 Glassmorphism 风格）。
+[简体中文](README_zh.md)
 
-## 🛠️ 技术栈
+## ✨ Features
 
-- **语言**: Kotlin
-- **UI 框架**: Jetpack Compose
-- **数据库**: Room (SQLite)
-- **依赖注入/处理**: KSP (Kotlin Symbol Processing)
-- **架构**: MVVM (Model-View-ViewModel)
+- **Smart SMS Parsing**: Custom regex patterns to automatically extract pickup codes from delivery SMS
+- **Local Storage**: Privacy-focused with offline-first design using Room database
+- **Status Management**: Clear separation of pending and archived pickups
+- **Flexible Rules**: Configure matching rules for different package station formats
+- **Modern UI**: Built with Jetpack Compose for smooth interactions and glassmorphism design
 
-## 🚀 快速开始
+## 🛠️ Tech Stack
 
-### 环境要求
+| Component | Technology |
+|-----------|-----------|
+| Language | Kotlin |
+| UI Framework | Jetpack Compose |
+| Database | Room (SQLite) |
+| Dependency Injection | Hilt |
+| Build System | Gradle |
+| Architecture | MVVM |
 
-- **Android Studio**: Jellyfish (2023.3.1) 或更高版本。
-- **JDK**: Java 17 (推荐)。
-- **Android SDK**: API Level 26 (Android 8.0) 及以上。
+## 📋 Requirements
 
-### 构建步骤
+- **Android Studio**: Jellyfish (2023.3.1) or later
+- **JDK**: Java 17+
+- **Android SDK**: API 26+ (Android 8.0+)
 
-1. **克隆项目**:
+## 🚀 Quick Start
+
+### Clone & Setup
+
+```bash
+# Clone repository
+git clone https://github.com/qnmlgbd250/abox-picker.git
+cd abox-picker
+
+# Build with Gradle
+./gradlew assembleDebug
+```
+
+### Run
+
+1. Open project in Android Studio
+2. Wait for Gradle sync to complete
+3. Click **Run** (Alt + R) or build APK:
    ```bash
-   git clone git@github.com:qnmlgbd250/abox-picker.git
+   ./gradlew assembleRelease
    ```
-2. **在 Android Studio 中打开**:
-   选择项目根目录，等待 Gradle 同步完成。
-3. **运行/构建**:
-   - 直接点击 IDE 中的 **Run** 按钮。
-   - 或者使用命令行构建调试包：
-     ```bash
-     ./gradlew assembleDebug
-     ```
 
-## 📝 使用说明
+## 📖 Usage
 
-由于各地区、各服务商的短信模板各异，项目**不内置**默认规则。
-1. 进入应用设置或规则管理页面。
-2. 添加新规则：
-   - **识别关键词**: 如 `菜鸟, 驿站`（逗号分隔）。
-   - **匹配正则**: 编写用于提取取件码的正则表达式。
-3. 导入短信或接收新短信时，应用将自动根据规则进行解析。
+1. **Open Settings** → Create a new rule
+2. **Add Rule Details**:
+   - **Keywords**: e.g., `菜鸟,驿站` (comma-separated)
+   - **Regex Pattern**: Extract pickup codes matching your SMS format
+3. **Receive SMS**: App automatically parses and categorizes messages
 
-## 📄 开源协议
+### Example Regex Pattern
 
-本项目采用 [MIT License](LICENSE) (或根据您的需求修改)。
+```regex
+取件码[：:]\s*(\S+)
+```
+
+This pattern extracts pickup codes in format: `取件码: ABC123`
+
+## 📁 Project Structure
+
+```
+abox-picker/
+├── src/
+│   ├── main/
+│   │   ├── kotlin/
+│   │   │   └── com/example/aboxpicker/
+│   │   │       ├── ui/          # Compose UI screens
+│   │   │       ├── data/        # Room entities & DAOs
+│   │   │       ├── viewmodel/   # MVVM ViewModels
+│   │   │       └── utils/       # Regex parsing utilities
+│   │   └── res/
+│   └── test/
+├── build.gradle.kts
+└── README.md
+```
+
+## 🔐 Privacy & Security
+
+- All data stored locally on device
+- No network requests or data collection
+- No ads or tracking
+- Full offline functionality
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the [MIT License](LICENSE) - see the LICENSE file for details.
+
+## 🐛 Issues & Support
+
+Found a bug or have a suggestion? [Open an issue](https://github.com/qnmlgbd250/abox-picker/issues)
+
+---
+
+**Made with ❤️ by [qnmlgbd250](https://github.com/qnmlgbd250)**
